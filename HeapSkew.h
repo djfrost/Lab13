@@ -90,7 +90,7 @@ void HeapSkew<T>::heapInsert(T* item)
 {
    //DO THIS (calls merge, should be short)
    TreeNode<T>* itemTree = new TreeNode<T>(item);
-   bt =heapInsert(bt, itemTree);
+   bt =merge(bt, itemTree);
    sze++;
 }
 
