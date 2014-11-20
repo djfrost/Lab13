@@ -70,11 +70,8 @@ template < class T >
 void HeapSkew<T>::heapInsert(T* item)
 {
    //DO THIS (calls merge, should be short)
-
-
-
-
-
+   TreeNode<T>* itemTree = new TreeNode<T>(item);
+   bt =heapInsert(bt, itemTree);
    sze++;
 }
 
@@ -82,13 +79,9 @@ template < class T >
 T* HeapSkew<T>::heapRemove()
 {
    //DO THIS (calls merge, should be short)
-
-
-
-
-
-   sze--;
-   return result;
+	bt = merge(bt->detachLeftSubtree(), bt->detachRightSubtree);
+	sze--;
+    return result;
 }
 
 template < class T >
