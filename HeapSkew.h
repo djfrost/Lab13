@@ -100,7 +100,7 @@ T* HeapSkew<T>::heapRemove()
 {
    //DO THIS (calls merge, should be short)
     TreeNode<T>* temp = bt->getRoot();
-	result = temp->getItem();
+	T* result = temp->getItem();
 	bt = merge(bt->detachLeftSubtree(), bt->detachRightSubtree);
 	sze--;
     return result;
