@@ -1,15 +1,26 @@
 AutomatedMakefile = am
 CC = g++
 
-LAB_13_PATH = /$(DRIVE_LETTER)/13-Heap_Skew
-GTKMM_PATH = /$(DRIVE_LETTER)/MinGW/gtkmm
+FILES = 
+EXECUTABLE = 
 
-INC_DIRS = -I$(LAB_13_PATH)/CSC2110/ -I$(LAB_13_PATH)/GUI/ -I$(GTKMM_PATH)/include/gtkmm-2.4 -I$(GTKMM_PATH)/lib/gtkmm-2.4/include -I$(GTKMM_PATH)/include/atkmm-1.6 -I$(GTKMM_PATH)/include/giomm-2.4 -I$(GTKMM_PATH)/lib/giomm-2.4/include -I$(GTKMM_PATH)/include/pangomm-1.4 -I$(GTKMM_PATH)/lib/pangomm-1.4/include -I$(GTKMM_PATH)/include/gtk-2.0 -I$(GTKMM_PATH)/include/gdkmm-2.4 -I$(GTKMM_PATH)/lib/gdkmm-2.4/include -I$(GTKMM_PATH)/include/atk-1.0 -I$(GTKMM_PATH)/include/glibmm-2.4 -I$(GTKMM_PATH)/lib/glibmm-2.4/include -I$(GTKMM_PATH)/include/glib-2.0 -I$(GTKMM_PATH)/lib/glib-2.0/include -I$(GTKMM_PATH)/include/sigc++-2.0 -I$(GTKMM_PATH)/lib/sigc++-2.0/include -I$(GTKMM_PATH)/include/cairomm-1.0 -I$(GTKMM_PATH)/lib/cairomm-1.0/include -I$(GTKMM_PATH)/include/pango-1.0 -I$(GTKMM_PATH)/include/cairo -I$(GTKMM_PATH)/include -I$(GTKMM_PATH)/include/freetype2 -I$(GTKMM_PATH)/include/libpng14 -I$(GTKMM_PATH)/lib/gtk-2.0/include -I$(GTKMM_PATH)/include/gdk-pixbuf-2.0
-LIB_DIRS = -L$(LAB_13_PATH)/CSC2110/ -L$(LAB_13_PATH)/GUI/ -L$(GTKMM_PATH)/lib
-LIBS = -lCSC2110 -lgui -lgtkmm-2.4 -latkmm-1.6 -lgdkmm-2.4 -lgiomm-2.4 -lpangomm-1.4 -lgtk-win32-2.0 -lglibmm-2.4 -lcairomm-1.0 -lsigc-2.0 -lgdk-win32-2.0 -latk-1.0 -lgio-2.0 -lpangowin32-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lpng14 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lglib-2.0 -lintl
+PROJECT_PATH = $(PROJECT_DIR)
+GTK_PATH = /$(DRIVE_LETTER)/MinGW/GTK
+GTKMM3_PATH = /$(DRIVE_LETTER)/MinGW/gtkmm3
+
+INC_DIRS = -I$(PROJECT_PATH)/CSC2110 -I$(PROJECT_PATH)/GUI  -I$(GTK_PATH)/include/gtk-3.0 -I$(GTK_PATH)/include/cairo -I$(GTK_PATH)/include/pango-1.0 -I$(GTK_PATH)/include/atk-1.0 -I$(GTK_PATH)/include/pixman-1 -I$(GTK_PATH)/include -I$(GTK_PATH)/include/freetype2 -I$(GTK_PATH)/include/libpng15 -I$(GTK_PATH)/include/gdk-pixbuf-2.0 -I$(GTK_PATH)/include/glib-2.0 -I$(GTK_PATH)/lib/glib-2.0/include -I$(GTKMM3_PATH)/include/gtkmm-3.0 -I$(GTKMM3_PATH)/lib/gtkmm-3.0/include -I$(GTKMM3_PATH)/include/atkmm-1.6 -I$(GTKMM3_PATH)/include/gdkmm-3.0 -I$(GTKMM3_PATH)/lib/gdkmm-3.0/include -I$(GTKMM3_PATH)/include/giomm-2.4 -I$(GTKMM3_PATH)/lib/giomm-2.4/include -I$(GTKMM3_PATH)/include/pangomm-1.4 -I$(GTKMM3_PATH)/lib/pangomm-1.4/include -I$(GTKMM3_PATH)/include/glibmm-2.4 -I$(GTKMM3_PATH)/lib/glibmm-2.4/include -I$(GTKMM3_PATH)/include/cairomm-1.0 -I$(GTKMM3_PATH)/lib/cairomm-1.0/include -I$(GTKMM3_PATH)/include/sigc++-2.0 -I$(GTKMM3_PATH)/lib/sigc++-2.0/include
+LIB_DIRS = -L$(PROJECT_PATH)/CSC2110 -L$(PROJECT_PATH)/GUI  -L$(GTK_PATH)/lib -L$(GTKMM3_PATH)/lib
+LIBS = -lCSC2110 -lgui -lgtkmm-3.0 -latkmm-1.6 -lgdkmm-3.0 -lgiomm-2.4 -lpangomm-1.4 -lglibmm-2.4 -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpangoft2-1.0 -lpangowin32-1.0 -lpango-1.0 -latk-1.0 -lcairo-gobject -lgio-2.0 -lcairomm-1.0 -lcairo -lsigc-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 -lintl
 
 COMPILE = $(CC) $(INC_DIRS) -c
 LINK = $(CC) $(LIB_DIRS) -o
+
+
+all: Project
+
+Project: 		$(FILES)
+			$(LINK) $(EXECUTABLE) $(FILES) $(LIBS)
+
 
 
 
