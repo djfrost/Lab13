@@ -2,6 +2,8 @@
 #define HEAPSKEW_H
 
 #include "BinaryTree.h"
+#include <iostream>
+using namespace std;
 
 template < class T >
 class HeapSkew : public Drawable
@@ -53,6 +55,7 @@ template < class T >
 BinaryTree<T>* HeapSkew<T>::merge(BinaryTree<T>* left, BinaryTree<T>* right)
 {
    //DO THIS
+
    if (left->isEmpty())
    {
        return right;                    
@@ -65,20 +68,23 @@ BinaryTree<T>* HeapSkew<T>::merge(BinaryTree<T>* left, BinaryTree<T>* right)
    int comp = (*compare_items) (left->getRootItem(), right->getRootItem());
    if (comp < 0)
    {
-       BinaryTree<T>* reversed = merge(right, left);         
+       BinaryTree<T>* reversed = merge(right, left);
+	   return reversed;
    }
 
    BinaryTree<T>* ll = left->detachLeftSubtree();
    BinaryTree<T>* lr = left->detachRightSubtree();
-   lr->attachRightSubtree(ll);
+   left->attachRightSubtree(ll);
    
    if (lr->isEmpty())
    {
-       ll->attachLeftSubtree(right);
+		cout << "is empty";
+       left->attachLeftSubtree(right);
        return left;                  
    }
    else
    {
+		cout << "Recursion";
        BinaryTree<T>* subtree = merge(lr, right);
        left->attachLeftSubtree(subtree);
        return left;    
