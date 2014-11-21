@@ -22,13 +22,30 @@ class ListArray
       bool isEmpty();
       int size();
       void removeAll();
+
+      //pre: index is between 1 and the number of items in the list inclusive
+      //post: the item at the specified index is returned
       T* get(int index);
+
+      //pre: index is between 1 and the number of items in the list + 1 inclusive
+      //post: the item is added to the list at the specified index
+      //      the indices of the items already in the list are adjusted
+      //      true is returned if the add was successful, false otherwise
       void add(int index, T* item);
-      void add(T* item);
+
+
+      //pre: index is between 1 and the number of items in the list inclusive
+      //post: the item is removed from the specified index
+      //      the indices of the items remaining in the list are adjusted
+      //      true is returned if the remove was successful, false otherwise
       void remove(int index);
-      void set(int index, T* item);
+
       ListArrayIterator<T>* iterator();
       T** toArray();
+
+      //convenience methods
+      void add(T* item);
+      void set(int index, T* item);
 };
 
 template < class T >

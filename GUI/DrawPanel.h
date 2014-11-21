@@ -17,14 +17,15 @@ class DrawPanel : public Gtk::DrawingArea
 
    public:
       DrawPanel(int width, int height, Drawable* d);
-      virtual ~DrawPanel();  
+      virtual ~DrawPanel();
       virtual void render();
+      virtual void render(const Cairo::RefPtr<Cairo::Context>& cr);
       virtual bool on_button_press_event(GdkEventButton* event);
+      virtual bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
       //virtual bool on_key_press_event(GdkEventKey* event);
 
    protected:
       //override default signal handler
-      virtual bool on_expose_event(GdkEventExpose* event);
 
 };
 
