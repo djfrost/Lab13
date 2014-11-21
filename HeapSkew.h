@@ -70,11 +70,11 @@ BinaryTree<T>* HeapSkew<T>::merge(BinaryTree<T>* left, BinaryTree<T>* right)
 
    BinaryTree<T>* ll = left->detachLeftSubtree();
    BinaryTree<T>* lr = left->detachRightSubtree();
-   left->attachRightSubtree(ll);
+   lr->attachRightSubtree(ll);
    
    if (lr->isEmpty())
    {
-       left->attachLeftSubtree(right);
+       ll->attachLeftSubtree(right);
        return left;                  
    }
    else
