@@ -1,8 +1,8 @@
 AutomatedMakefile = am
 CC = g++
 
-FILES = DrawHeapSkew.o 
-#HeapDriver.o
+FILES =  HeapDriver.o
+#DrawHeapSkew.o
 EXECUTABLE = heap.exe
 
 PROJECT_PATH = $(PROJECT_DIR)
@@ -26,4 +26,4 @@ DrawHeapSkew.o: DrawHeapSkew.cpp HeapSkew.h
 				$(COMPILE) DrawHeapSkew.cpp
 				
 HeapDriver.o: HeapDriver.cpp HeapSkew.h
-				$(COMPILE)
+				$(COMPILE) HeapDriver.cpp

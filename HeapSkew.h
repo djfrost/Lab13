@@ -58,10 +58,12 @@ BinaryTree<T>* HeapSkew<T>::merge(BinaryTree<T>* left, BinaryTree<T>* right)
 
    if (left->isEmpty())
    {
+		delete left;
        return right;                    
    }
    else if (right->isEmpty())
    {
+		delete right;
        return left;     
    }
 
@@ -75,18 +77,18 @@ BinaryTree<T>* HeapSkew<T>::merge(BinaryTree<T>* left, BinaryTree<T>* right)
    BinaryTree<T>* ll = left->detachLeftSubtree();
    BinaryTree<T>* lr = left->detachRightSubtree();
    left->attachRightSubtree(ll);
-   
+   delete ll;
    if (lr->isEmpty())
    {
-		cout << "is empty";
        left->attachLeftSubtree(right);
+	   delete lr;
        return left;                  
    }
    else
    {
-		cout << "Recursion";
        BinaryTree<T>* subtree = merge(lr, right);
        left->attachLeftSubtree(subtree);
+	   delete lr;
        return left;    
    }
 }
@@ -105,11 +107,12 @@ template < class T >
 T* HeapSkew<T>::heapRemove()
 {
    //DO THIS (calls merge, should be short)
-    TreeNode<T>* temp = bt->getRoot();
-	T* result = temp->getItem();
-	bt = merge(bt->detachLeftSubtree(), bt->detachRightSubtree);
+	T* item = bt->getRootItem();
 	sze--;
-    return result;
+	BinaryTree<T>* toDelete = bt;
+	bt = merge(bt->detachLeftSubtree(), bt->detachRightSubtree());
+	delete toDelete;
+    return item;
 }
 
 template < class T >
