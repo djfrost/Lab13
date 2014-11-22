@@ -68,8 +68,8 @@ BinaryTree<T>* HeapSkew<T>::merge(BinaryTree<T>* left, BinaryTree<T>* right)
    int comp = (*compare_items) (left->getRootItem(), right->getRootItem());
    if (comp < 0)
    {
-       BinaryTree<T>* reversed = merge(right, left);
-	   return reversed;
+       return merge(right, left);
+	   
    }
 
    BinaryTree<T>* ll = left->detachLeftSubtree();
@@ -97,7 +97,7 @@ void HeapSkew<T>::heapInsert(T* item)
    //DO THIS (calls merge, should be short)
    BinaryTree<T>* itemTree = new BinaryTree<T>(item);
    
-   bt =merge(bt, itemTree);
+   bt = merge(bt, itemTree);
    sze++;
 }
 

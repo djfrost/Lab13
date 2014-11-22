@@ -206,19 +206,19 @@ BinaryTree<T>* BinaryTree<T>::detachRightSubtree()
    //throw an exception if the tree is empty (can't detach without a node)
    if (isEmpty()) 
    {
-      return new BinaryTree<T>();
+      return new BinaryTree();
    }
    //should also check that there is a right child (if not, return an empty BinaryTree)
    else if (getRootNode()->getRight() == NULL)
    {
-      return new BinaryTree<T>();
+      return new BinaryTree();
    }
    else 
    {
       TreeNode<T>* root_node = getRootNode();
       //create a new binary tree that has root's right node as its root
       //use the protected constructor for this
-      BinaryTree<T>* right_tree = new BinaryTree<T>(root_node->getRight()->getItem());
+      BinaryTree<T>* right_tree = new BinaryTree<T>(root_node->getRight());
       //remove the right reference from the root node
       root_node->setRight(NULL);
       //return a reference to the new binary tree
